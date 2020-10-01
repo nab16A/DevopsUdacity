@@ -1,4 +1,7 @@
-provider "azurerm" { 
+provider "azurerm" {
+  version = "=2.29.0"
+  subscription_id = var.subscription_id
+  tenant_id = var.tenant_id  
   features {}
 }
 
@@ -50,6 +53,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
   size                            = "Standard_D2_v3"
+  admin_username                 = "adminuser"
+  admin_password                  = "P@ssw0rd1234!" 
   disable_password_authentication = false            
   network_interface_ids = [
     azurerm_network_interface.main.id,
