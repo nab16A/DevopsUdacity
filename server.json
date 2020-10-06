@@ -1,0 +1,30 @@
+{
+	"builders": [{
+		"type": "azure-arm",
+		
+		"client_id": "{{user `my-client-id`}}",
+		"client_secret": "{{user `my-client-secret`}}",
+		"subscription_id": "{{user `my-subscription-id`}}",
+		"tenant_id": "{{user `my-tenant-id`}}",
+		
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-LTS",
+		
+		"managed_image_resource_group_name": "project-rg",
+		"managed_image_name": "projectPackerImage",
+		
+		"location": "northeurope",
+		"vm_size": "Standard_D3_v2"
+	}],
+	"provisioners": [{
+		"inline": [
+			"echo 'Hello, World!' > index.html",
+			"nohup busybox httpd -f -p 80 &"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell",
+		"execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+	}]
+}

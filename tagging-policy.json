@@ -1,0 +1,19 @@
+{
+	"type": "Microsoft.Authorization/policyDefinitions",
+	"name": "tagging-policy",
+	"properties": {
+		"mode": "Indexed",
+		"displayName": "Resources must have a tag",
+		"description": "This policy deny the creation of resources that do not have tags.",
+		"policyRule": {
+			"if": {
+				"field": "[concat('tags[', parameters('tagName'), ']')]",
+				"exists": "false"
+			},
+			"then": {
+				"effect": "deny"
+			}
+		}
+	}
+}
+    

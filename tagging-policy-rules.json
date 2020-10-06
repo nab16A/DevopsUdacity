@@ -1,0 +1,19 @@
+{
+	"if": {
+		"allof": [
+			{
+				"field": "type",
+				"equals": "Microsoft.Resources/subscriptions"
+			},
+			{
+				"not": {
+					"field": "[concat('tags[', parameters('tagName'), ']')]",
+					"equals": "[parameters('tagValue')]"
+				}
+			}
+		]
+	},
+	"then": {
+		"effect": "deny"
+	}
+}
