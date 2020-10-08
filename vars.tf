@@ -1,11 +1,11 @@
 variable "subscriptionId" {
 	type = string
-	default = "64c9682c-ca80-483b-b031-ae4bdaf3e808"
+	default = "..."
 }
 
 variable "tenantId" {
 	type = string
-	default = "d6bbc8a5-46c8-4738-8142-199967a3b00b"
+	default = "..."
 }
 
 variable "resource_group_name" {
@@ -43,6 +43,20 @@ variable "subnet_addr_pref" {
 	description = "The address prefix to use for the subnet."
 }
 
+variable "usr" {
+	type = string
+	default = "adminuser"
+}
+
+variable "pwd" {
+	type = string
+	default = "P@ssw0rd1234!"
+}
+
+variable "vm_id" {
+	type = string
+	default = "/subscriptions/..../resourceGroups/project-rg/providers/Microsoft.Compute/images/projectPackerImage"
+}
 
 
 
